@@ -10,4 +10,14 @@ class State extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'slug'];
+
+    public function advertises()
+    {
+        return $this->hasMany(Advertise::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }
