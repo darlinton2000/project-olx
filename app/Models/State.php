@@ -10,6 +10,7 @@ class State extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'slug'];
+    public $timestamps = false;
 
     public function advertises()
     {
