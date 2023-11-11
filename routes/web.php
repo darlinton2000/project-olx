@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\StatesController;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +16,9 @@ use Illuminate\Http\JsonResponse;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/ping', function (): JsonResponse {
     return response()->json(['Pong' => true]);
 });
+
+Route::get('/states', [StatesController::class, 'index']);
+Route::get('/categories', [CategoriesController::class, 'index']);
