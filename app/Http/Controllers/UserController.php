@@ -54,8 +54,22 @@ class UserController extends Controller
         return response()->json(['error' => 'Usuário ou Senha inválidos']);
     }
 
+    /**
+     * Returns user data
+     *
+     * @return JsonResponse
+     */
     public function me(): JsonResponse
     {
-        return response()->json(['method' => 'me']);
+        $user = Auth::user();
+
+        $response = [
+            'name' => $user->name,
+            'email' => $user->email,
+            'state' => $user->state->name,
+            'ads' => $user->advertises
+        ];
+
+        return response()->json($response);
     }
 }
