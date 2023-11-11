@@ -12,7 +12,13 @@ class UserController extends Controller
     {
         $data = $request->only(['name', 'email', 'password', 'state_id']);
         $user = User::create($data);
-        return response()->json($user);
+
+        $response = [
+            'error' => '',
+            'user' => $user
+        ];
+
+        return response()->json($response);
     }
     public function signin(): JsonResponse
     {
